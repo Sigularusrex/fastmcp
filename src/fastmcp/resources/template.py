@@ -16,8 +16,8 @@ if TYPE_CHECKING:
         from docket import Docket
         from docket.execution import Execution
     except ImportError:
-    # pydocket not available
-    pass
+        # pydocket not available
+        pass
 from mcp.types import ResourceTemplate as SDKResourceTemplate
 from pydantic import (
     Field,

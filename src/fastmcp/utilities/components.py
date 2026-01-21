@@ -11,8 +11,12 @@ from fastmcp.server.tasks.config import TaskConfig
 from fastmcp.utilities.types import FastMCPBaseModel
 
 if TYPE_CHECKING:
-    from docket import Docket
-    from docket.execution import Execution
+    try:
+        from docket import Docket
+        from docket.execution import Execution
+    except ImportError:
+        # pydocket not available
+        pass
 
 T = TypeVar("T", default=Any)
 

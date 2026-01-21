@@ -41,9 +41,12 @@ from fastmcp.utilities.types import (
 AuthCheckCallable: TypeAlias = Callable[[Any], bool]
 
 if TYPE_CHECKING:
-    from docket import Docket
-    from docket.execution import Execution
-
+    try:
+        from docket import Docket
+        from docket.execution import Execution
+    except ImportError:
+        # pydocket not available
+        pass
     from fastmcp.tools.function_tool import FunctionTool
     from fastmcp.tools.tool_transform import ArgTransform, TransformedTool
 

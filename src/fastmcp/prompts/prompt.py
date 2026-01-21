@@ -10,9 +10,12 @@ import pydantic
 import pydantic_core
 
 if TYPE_CHECKING:
-    from docket import Docket
-    from docket.execution import Execution
-
+    try:
+        from docket import Docket
+        from docket.execution import Execution
+    except ImportError:
+       # pydocket not available
+       pass
     from fastmcp.prompts.function_prompt import FunctionPrompt
 import mcp.types
 from mcp import GetPromptResult

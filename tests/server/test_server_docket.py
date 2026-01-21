@@ -3,8 +3,13 @@
 import asyncio
 from contextlib import asynccontextmanager
 
-from docket import Docket
-from docket.worker import Worker
+
+try:
+    from docket import Docket
+    from docket.worker import Worker
+except ImportError:
+    # pydocket not available
+    pass
 
 from fastmcp import FastMCP
 from fastmcp.client import Client

@@ -12,8 +12,11 @@ import fastmcp
 from fastmcp.utilities.logging import get_logger
 
 if TYPE_CHECKING:
-    from docket import Docket
-
+    try:
+        from docket import Docket
+    except ImportError:
+        # pydocket not available
+        pass
     from fastmcp.server.server import FastMCP
 
 logger = get_logger(__name__)
@@ -70,7 +73,11 @@ class LifespanMixin:
                 return
 
             # Docket is available AND there are task-enabled components
-            from docket import Docket, Worker
+            try:
+                from docket import Docket, Worker
+            except ImportError:
+                # pydocket not available
+                pass
 
             from fastmcp import settings
             from fastmcp.server.dependencies import (

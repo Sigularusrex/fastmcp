@@ -20,8 +20,13 @@ from fastmcp.server.tasks.requests import DOCKET_TO_MCP_STATE
 from fastmcp.utilities.logging import get_logger
 
 if TYPE_CHECKING:
-    from docket import Docket
-    from docket.execution import Execution
+    try:
+        from docket import Docket
+        from docket.execution import Execution
+    except ImportError:
+        # pydocket not available
+        pass
+    
     from mcp.server.session import ServerSession
 
 logger = get_logger(__name__)

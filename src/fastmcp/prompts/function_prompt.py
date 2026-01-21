@@ -36,8 +36,12 @@ from fastmcp.utilities.logging import get_logger
 from fastmcp.utilities.types import get_cached_typeadapter
 
 if TYPE_CHECKING:
-    from docket import Docket
-    from docket.execution import Execution
+    try:
+        from docket import Docket
+        from docket.execution import Execution
+    except ImportError:
+        # pydocket not available
+        pass
 
 F = TypeVar("F", bound=Callable[..., Any])
 

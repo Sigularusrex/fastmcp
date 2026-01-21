@@ -23,7 +23,11 @@ from fastmcp.tools.tool import AuthCheckCallable
 from fastmcp.utilities.async_utils import call_sync_fn_in_threadpool
 
 if TYPE_CHECKING:
-    from docket import Docket
+    try:
+        from docket import Docket
+    except ImportError:
+       # pydocket not available
+       pass
 
     from fastmcp.resources.template import ResourceTemplate
 

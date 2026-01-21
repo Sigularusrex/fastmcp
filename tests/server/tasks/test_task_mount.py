@@ -9,7 +9,11 @@ import asyncio
 
 import mcp.types as mt
 import pytest
-from docket import Docket
+try:
+    from docket import Docket
+except ImportError:
+    # pydocket not available
+    pass
 
 from fastmcp import FastMCP
 from fastmcp.client import Client

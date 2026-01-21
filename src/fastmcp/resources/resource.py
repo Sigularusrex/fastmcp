@@ -9,8 +9,12 @@ from typing import TYPE_CHECKING, Annotated, Any, ClassVar, overload
 import mcp.types
 
 if TYPE_CHECKING:
-    from docket import Docket
-    from docket.execution import Execution
+    try:
+        from docket import Docket
+        from docket.execution import Execution
+    except ImportError:
+       # pydocket not available
+       pass
 
     from fastmcp.resources.function_resource import FunctionResource
 

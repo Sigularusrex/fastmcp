@@ -33,9 +33,12 @@ from fastmcp.utilities.async_utils import call_sync_fn_in_threadpool
 from fastmcp.utilities.types import find_kwarg_by_type, is_class_member_of_type
 
 if TYPE_CHECKING:
-    from docket import Docket
-    from docket.worker import Worker
-
+    try:
+        from docket import Docket
+        from docket.worker import Worker
+    except ImportError:
+        # pydocket not available
+        pass
     from fastmcp.server.context import Context
     from fastmcp.server.server import FastMCP
 
